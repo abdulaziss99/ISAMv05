@@ -772,9 +772,9 @@ window.onload = async () => {
   const raw = localStorage.getItem('msm_session') || sessionStorage.getItem('msm_session');
   const urlParams = new URLSearchParams(window.location.search);
   const targetIns = urlParams.get('inspeksi');
-  if (!raw) { if(targetIns) sessionStorage.setItem('redirect_inspeksi',targetIns); window.location.href='login.html'; return; }
+  if (!raw) { if(targetIns) sessionStorage.setItem('redirect_inspeksi',targetIns); window.location.href='index.html'; return; }
   SESSION = JSON.parse(raw);
-  if ((new Date()-new Date(SESSION.login_at))/3600000 > 8) { localStorage.removeItem('msm_session'); window.location.href='login.html'; return; }
+  if ((new Date()-new Date(SESSION.login_at))/3600000 > 8) { localStorage.removeItem('msm_session'); window.location.href='index.html'; return; }
   const role = (SESSION.role||'PIC').toUpperCase();
   renderTopbar();
   renderProfil();
@@ -1196,7 +1196,7 @@ async function compressFoto(file,q=0.7,maxPx=1280){
 }
 
 // ── HELPERS ──
-function logout(){if(confirm('Yakin ingin keluar?')){localStorage.clear();sessionStorage.clear();window.location.replace('login.html');}}
+function logout(){if(confirm('Yakin ingin keluar?')){localStorage.clear();sessionStorage.clear();window.location.replace('index.html');}}
 function showLoad(msg){document.getElementById('lo').classList.add('show');document.getElementById('loMsg').textContent=msg||'Loading...'}
 function hideLoad(){document.getElementById('lo').classList.remove('show')}
 function showToast(msg,type='info'){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.className='toast show '+type;setTimeout(()=>t.classList.remove('show'),3500)}
